@@ -213,3 +213,4 @@ NGINX_ADMIN_ACCESS_CIDRS: []
 
 # Set trusted network subnets or IP addresses to send correct replacement addresses
 NGINX_TRUSTED_IP_CIDRS: "0.0.0.0/0"
+NGINX_ALLOW_PRIVATE_IP_ACCESS: False
