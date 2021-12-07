@@ -133,36 +133,36 @@
     - install
     - install:configuration
 
-- name: enable Hadoop services
-  service:
-    name: "{{ hadoop_common_services }}"
-    enabled: yes
-  tags:
-    - install
-    - install:configuration
+# - name: enable Hadoop services
+#   service:
+#     name: "{{ hadoop_common_services }}"
+#     enabled: yes
+#   tags:
+#     - install
+#     - install:configuration
 
-- name: start Hadoop services
-  service:
-    name: "{{ hadoop_common_services }}"
-    state: started
-  tags:
-    - manage
-    - manage:start
+# - name: start Hadoop services
+#   service:
+#     name: "{{ hadoop_common_services }}"
+#     state: started
+#   tags:
+#     - manage
+#     - manage:start
 
-- name: stop Hadoop services
-  service:
-    name: "{{ hadoop_common_services }}"
-    state: stopped
-  tags:
-    - manage:stop
+# - name: stop Hadoop services
+#   service:
+#     name: "{{ hadoop_common_services }}"
+#     state: stopped
+#   tags:
+#     - manage:stop
 
-- name: restart Hadoop services
-  service:
-    name: "{{ hadoop_common_services }}"
-    state: restarted
-  tags:
-    - manage:start
-    - manage:restart
+# - name: restart Hadoop services
+#   service:
+#     name: "{{ hadoop_common_services }}"
+#     state: restarted
+#   tags:
+#     - manage:start
+#     - manage:restart
 
 - name: Ensure package dir exists in HDFS
   shell: ". {{ HADOOP_COMMON_CONF_DIR }}/hadoop-env.sh && hdfs dfs -mkdir -p /edx-analytics-pipeline/packages/"
