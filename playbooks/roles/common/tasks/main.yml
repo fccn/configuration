@@ -79,12 +79,14 @@
   when: >
     ansible_distribution in common_debian_variants and
     ansible_distribution_release != 'bionic'
+    and ( COMMON_EDX_PPA_enabled | default(True) )
 
 - name: Update expired apt keys
   shell: apt-key adv --recv-keys --keyserver {{ COMMON_EDX_PPA_KEY_SERVER }} {{ COMMON_EDX_PPA_KEY_ID }}
   when: >
     ansible_distribution in common_debian_variants and
-    ansible_distribution_release != 'bionic'
+    ansible_distribution_release != 'bionic' 
+    and ( COMMON_EDX_PPA_enabled | default(True) )
 
 
 - name: Add custom edX PPA
@@ -95,6 +97,7 @@
   when: >
     ansible_distribution in common_debian_variants and
     ansible_distribution_release != 'bionic'
+    and ( COMMON_EDX_PPA_enabled | default(True) )
 
 
 - name: Install role-independent useful system packages
