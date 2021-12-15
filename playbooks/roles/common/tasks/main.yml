@@ -89,12 +89,14 @@
   when: >
     ansible_distribution in common_debian_variants and
     (ansible_distribution_release != 'bionic' and ansible_distribution_release != 'focal')
+    and ( COMMON_EDX_PPA_enabled | default(True) )
 
 - name: Update expired apt keys
   shell: apt-key adv --recv-keys --keyserver {{ COMMON_EDX_PPA_KEY_SERVER }} {{ COMMON_EDX_PPA_KEY_ID }}
   when: >
     ansible_distribution in common_debian_variants and
     (ansible_distribution_release != 'bionic' and ansible_distribution_release != 'focal')
+    and ( COMMON_EDX_PPA_enabled | default(True) )
 
 - name: Add custom edX PPA
   # Ensure that we get the latest version of python 2.7
@@ -104,6 +106,7 @@
   when: >
     ansible_distribution in common_debian_variants and
     (ansible_distribution_release != 'bionic' and ansible_distribution_release != 'focal')
+    and ( COMMON_EDX_PPA_enabled | default(True) )
 
 # The deadsnakes PPA is required to install python3.5 on Bionic and Focal
 # Xenial comes with python3.5 installed.
